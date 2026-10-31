@@ -1,0 +1,29 @@
+digraph TimesheetActivity {
+  graph [rankdir=TB, bgcolor="white", pad=0.15, nodesep=0.22, ranksep=0.22];
+  node [shape=box, style="rounded,filled", fontname="Times New Roman", fontsize=12,
+        color="#444444", fillcolor="#F5F5F5", margin="0.12,0.06"];
+  edge [fontname="Times New Roman", fontsize=11, color="#555555", arrowsize=0.7];
+  start [label="Начало", shape=oval];
+  input [label="Получить строку табеля", shape=parallelogram];
+  present [label="Строка задана\nи не пуста?", shape=diamond, fillcolor="#FFFFFF"];
+  split [label="Разделить строку по ;\nс сохранением пустых полей"];
+  count [label="Ровно 5 значений?", shape=diamond, fillcolor="#FFFFFF"];
+  each [label="Для каждого элемента по порядку:\nпроверить формат целого числа без знака\nи ведущих нулей; преобразовать в int;\nпроверить диапазон от 0 до 16.\nПри первой ошибке прекратить цикл"];
+  valid [label="Все элементы\nкорректны?", shape=diamond, fillcolor="#FFFFFF"];
+  metrics [label="Вычислить сумму, среднее, число дней > 8;\nнедоработку max(0, 40 - сумма);\nчасы отдыха по той же формуле"];
+  report [label="Вывести sum, avg с двумя знаками,\nod, wo и rh по варианту 3", shape=parallelogram];
+  error [label="Вывести ошибку структуры\nили первую ошибку значения\nс позицией от 1 до 5", fillcolor="#EEEEEE"];
+  end [label="Завершение обработки строки", shape=oval];
+  start -> input -> present;
+  present -> split [label="да"];
+  present -> error [label="нет"];
+  split -> count;
+  count -> each [label="да"];
+  count -> error [label="нет"];
+  each -> valid;
+  valid -> metrics [label="да"];
+  valid -> error [label="нет"];
+  metrics -> report -> end;
+  error -> end;
+  {rank=same; metrics; error;}
+}

@@ -1,0 +1,70 @@
+PR5 / variant 3
+weeklyOvertime = max(0, 40 - total)
+PASS unit/01 parse valid
+PASS unit/02 empty
+PASS unit/03 value 17
+PASS unit/04 text
+PASS unit/05 four values
+PASS unit/06 trailing separator
+PASS unit/07 leading zero
+PASS unit/08 total typical
+PASS unit/09 total minimum
+PASS unit/10 total maximum
+PASS unit/11 average typical
+PASS unit/12 average integer
+PASS unit/13 average fraction
+PASS unit/14 no overtime days
+PASS unit/15 two overtime days
+PASS unit/16 strict boundary 8
+PASS unit/17 week total 40
+PASS unit/18 week total 50
+PASS unit/19 week total 30
+PASS unit/20 variant A total 39
+PASS unit/21 variant A total 41
+PASS unit/22 variant B total 30
+PASS unit/23 variant B total 50
+PASS extra/01 parse minimum
+PASS extra/02 parse maximum
+PASS extra/03 fraction
+PASS extra/04 negative
+PASS extra/05 plus sign
+PASS extra/06 spaces
+PASS extra/07 empty field
+PASS extra/08 fifth position
+PASS extra/09 fail fast
+PASS extra/10 integer overflow
+PASS extra/11 six values
+PASS extra/12 null line
+PASS extra/13 rest all zero
+PASS extra/14 rest exact norm
+PASS guard/total null
+PASS guard/total length 4
+PASS guard/average null
+PASS guard/average length 4
+PASS guard/overtimeDays null
+PASS guard/overtimeDays length 4
+PASS guard/weeklyOvertime null
+PASS guard/weeklyOvertime length 4
+PASS guard/addRestHours null
+PASS guard/addRestHours length 4
+UNIT: 47 PASS, 0 FAIL
+PASS data/1
+PASS data/2
+PASS data/3
+PASS data/4
+PASS data/5
+PASS data/6
+PASS data/7
+PASS data/8
+PASS data/9
+PASS data/10
+PASS data/11
+PASS data/12
+PASS data/13
+PASS data/14
+PASS data/15
+PASS data/16
+PASS data/17
+PASS data/18
+DATA: 18 PASS, 0 FAIL
+TOTAL: 65 PASS, 0 FAIL

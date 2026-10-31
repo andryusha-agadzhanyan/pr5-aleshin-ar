@@ -1,0 +1,39 @@
+digraph TimesheetClasses {
+  graph [rankdir=TB, bgcolor="white", pad=0.22, nodesep=0.5, ranksep=0.65];
+  node [shape=plain, fontname="Times New Roman", fontsize=12];
+  edge [fontname="Times New Roman", fontsize=12, color="#444444"];
+  analyzer [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="7" COLOR="#555555">
+      <TR><TD BGCOLOR="#EEEEEE"><B>TimesheetAnalyzer</B><BR/>Все методы static; полей нет</TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1" SIDES="T">
+        + parseHours(line: String): int[]<BR ALIGN="LEFT"/>
+        + total(hours: int[]): int<BR ALIGN="LEFT"/>
+        + average(hours: int[]): double<BR ALIGN="LEFT"/>
+        + overtimeDays(hours: int[]): int<BR ALIGN="LEFT"/>
+        + weeklyOvertime(hours: int[]): int<BR ALIGN="LEFT"/>
+        + addRestHours(hours: int[]): int<BR ALIGN="LEFT"/>
+        - checkArray(hours: int[]): void<BR ALIGN="LEFT"/>
+      </TD></TR>
+    </TABLE>
+  >];
+  checks [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="7" COLOR="#555555">
+      <TR><TD BGCOLOR="#EEEEEE"><B>SelfCheck</B><BR/>Все поля и методы static</TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1" SIDES="T">
+        - passed: int<BR ALIGN="LEFT"/>
+        - failed: int<BR ALIGN="LEFT"/>
+      </TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1" SIDES="T">
+        + main(args: String[]): void<BR ALIGN="LEFT"/>
+        - runUnitChecks(): void<BR ALIGN="LEFT"/>
+        - check(name: String, ok: boolean, details: String): void<BR ALIGN="LEFT"/>
+        - expectParseError(name: String, input: String, messagePart: String): void<BR ALIGN="LEFT"/>
+        - expectArrayError(method: String, hours: int[]): void<BR ALIGN="LEFT"/>
+        - runDataChecks(file: Path): void<BR ALIGN="LEFT"/>
+        - resultLine(hours: int[]): String<BR ALIGN="LEFT"/>
+        - runInteractive(): void<BR ALIGN="LEFT"/>
+      </TD></TR>
+    </TABLE>
+  >];
+  checks -> analyzer [style=dashed, label="вызывает статические методы"];
+}
